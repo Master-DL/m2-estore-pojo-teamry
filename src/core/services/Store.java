@@ -13,7 +13,7 @@ import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
 
-public class Store {
+public class Store implements IStore {
 
 	    private Provider provider;
 	    private Bank bank;
@@ -34,7 +34,7 @@ public class Store {
 	    public double getPrice( Object item ) throws UnknownItemException {
 	        return provider.getPrice(item);
 	    }
-	    
+
 	    /**
 	     * @param item  a given item
 	     * @param qty   a given quantity
@@ -74,11 +74,12 @@ public class Store {
 	     * @throws MismatchClientCartException
 	     *      if the given client does not own the given cart
 	     */
-	    public Cart addItemToCart(
-	            Cart cart,
-	            Client client,
-	            Object item,
-	            int qty )
+		@Override
+		public Cart addItemToCart(
+				Cart cart,
+				Client client,
+				Object item,
+				int qty)
 	    throws UnknownItemException, InvalidCartException {
 	        
 	        if ( cart == null ) {
@@ -107,7 +108,8 @@ public class Store {
 	     * 
 	     * @throws UnknownItemException
 	     */
-	    public Order pay(Cart cart, String address, String bankAccountRef )
+		@Override
+		public Order pay(Cart cart, String address, String bankAccountRef)
 	    throws
 	    InvalidCartException, UnknownItemException,
 	    InsufficientBalanceException, UnknownAccountException {
@@ -169,13 +171,14 @@ public class Store {
 	     * @throws InsufficientBalanceException
 	     * @throws UnknownAccountException
 	     */
-	    public Order oneShotOrder(
-	            Client client,
-	            Object item,
-	            int qty,
-	            String address,
-	            String bankAccountRef
-	    )
+		@Override
+		public Order oneShotOrder(
+				Client client,
+				Object item,
+				int qty,
+				String address,
+				String bankAccountRef
+		)
 	    throws
 	    UnknownItemException,
 	    InsufficientBalanceException, UnknownAccountException {
