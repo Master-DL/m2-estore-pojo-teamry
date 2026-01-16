@@ -3,6 +3,7 @@ package core.services.ASImpl;
 import core.data.Cart;
 import core.data.Order;
 import core.services.AS.IStore;
+import core.services.AS.IStoreCart;
 import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
@@ -10,10 +11,10 @@ import estorePojo.exceptions.UnknownItemException;
 
 public class Client implements Runnable {
 
-    private IStore IStore;
+    private IStore store;
 
     public Client (IStore s){
-    	IStore = s;
+    	store = s;
     }
     // -----------------------------------------------------
     // Implementation of the Runnable interface
@@ -55,7 +56,7 @@ public class Client implements Runnable {
     InsufficientBalanceException, UnknownAccountException{
         
         System.out.println("Ordering "+qty+" "+item+" for "+account+"...");
-        Order order = IStore.oneShotOrder(this,item,qty,address,account);
+        Order order = store.oneShotOrder(this,item,qty,address,account);
         System.out.println(order);
     }
 
@@ -81,9 +82,9 @@ public class Client implements Runnable {
         Cart cart = null;
         for (int i = 0; i < items.length; i++) {
             System.out.println("Item: "+items[i]+", quantity: "+qties[i]);
-            cart = IStore.addItemToCart(cart,this,items[i],qties[i]);
+            cart = store.addItemToCart(cart,this,items[i],qties[i]);
         }
-        Order order = IStore.pay(cart,address,account);
+        Order order = store.pay(cart,address,account);
         System.out.println(order);
     }
 }
