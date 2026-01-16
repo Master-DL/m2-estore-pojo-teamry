@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import core.services.Client;
+import core.services.ASImpl.Client;
 import estorePojo.exceptions.UnknownItemException;
 
 public class Order {

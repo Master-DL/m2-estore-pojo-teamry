@@ -1,6 +1,12 @@
 package main;
 
-import core.services.*;
+import core.services.AS.IBank;
+import core.services.AS.IProvider;
+import core.services.AS.IStore;
+import core.services.ASImpl.Bank;
+import core.services.ASImpl.Client;
+import core.services.ASImpl.Provider;
+import core.services.ASImpl.Store;
 
 public class Main {
 

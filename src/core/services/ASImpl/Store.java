@@ -1,4 +1,4 @@
-package core.services;
+package core.services.ASImpl;
 
 	import java.util.HashMap;
 import java.util.Iterator;
@@ -8,6 +8,9 @@ import java.util.Set;
 	import core.data.Cart;
 	import core.data.ItemInStock;
 	import core.data.Order;
+	import core.services.AS.IBank;
+	import core.services.AS.IProvider;
+	import core.services.AS.IStore;
 	import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
@@ -31,7 +34,8 @@ public class Store implements IStore {
 	     * @return      the price of a given item
 	     * @throws UnknownItemException
 	     */
-	    public double getPrice( Object item ) throws UnknownItemException {
+		@Override
+		public double getPrice(Object item) throws UnknownItemException {
 	        return provider.getPrice(item);
 	    }
 
@@ -43,7 +47,8 @@ public class Store implements IStore {
 	     *      directly from the store
 	     *      i.e. without having to re-order it from the provider
 	     */
-	    public boolean isAvailable( Object item, int qty )
+		@Override
+		public boolean isAvailable(Object item, int qty)
 	    throws UnknownItemException {
 	        
 	        if ( ! itemsInStock.containsKey(item) )

@@ -1,8 +1,10 @@
-package core.services;
+package core.services.ASImpl;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import core.services.AS.IProvider;
+import core.services.AS.IStore;
 import estorePojo.exceptions.UnknownItemException;
 
 public class Provider implements IProvider {
