@@ -14,7 +14,7 @@ import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
 
-public class Store implements IStore {
+public class Store implements IStoreCart,IStoreOneShot,IStoreConsultation {
 
 	    private IProvider provider;
 	    private IBank bank;
@@ -149,8 +149,8 @@ public class Store implements IStore {
 	     * values = Order instances
 	     */
 	    private Map<Integer,Order> orders = new HashMap<>();
-	    
-	    /** 
+
+	    /**
 	     * A map of items available in the stock of the store.
 	     * keys = the references of the items as Objects
 	     * values = ItemInStock instances
