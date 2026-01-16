@@ -23,6 +23,7 @@ public class Provider implements IProvider {
 	 * @param item
 	 * @return
 	 */
+	@Override
 	public double getPrice(Object item) throws UnknownItemException {
 
 		if (!itemPrices.containsKey(item))

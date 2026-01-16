@@ -5,10 +5,10 @@ import core.services.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Provider prov = new Provider();
-		Bank bank = new Bank();
-		IStore IStore = new Store(prov,bank);
-		Client cl = new Client(IStore);
+		IProvider prov = new Provider();
+		IBank bank = new Bank();
+		IStore store = new Store(prov,bank);
+		Client cl = new Client(store);
 		
 		cl.run();
 
